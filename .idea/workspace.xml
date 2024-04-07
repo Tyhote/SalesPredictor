@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58b73793-244a-40b3-a617-c51858a4d303" name="Changes" comment="Started work on the DataGenerator, decided to go with pandas instead of torcharrow due to stability concerns. Checked if CUDA is available and all lights are green, so once we have a way to mockup data we'll be cooking with gas.">
-      <change afterPath="$PROJECT_DIR$/RetailProductsGeneratorTemplate.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataGenerators.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RetailCustomersGeneratorTemplate.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataGenerators.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataGenerators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RetailProductsGeneratorTemplate.csv" beforeDir="false" afterPath="$PROJECT_DIR$/RetailProductsGeneratorTemplate.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RetailSalesGeneratorTemplate.csv" beforeDir="false" afterPath="$PROJECT_DIR$/RetailSalesGeneratorTemplate.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
