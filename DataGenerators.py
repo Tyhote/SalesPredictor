@@ -19,10 +19,9 @@ class DataGenerators:
 
     @staticmethod
     def read_template(name):
-        file = open(name, "r")
-        columns = file.readline().strip().split(",")
-        file.close()
-        return columns
+        with open(name, "r") as file:
+            columns = file.readline().strip().split(",")
+            return columns
 
     @staticmethod
     def compress_int(number, min_n, max_n):
