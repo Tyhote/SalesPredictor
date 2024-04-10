@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58b73793-244a-40b3-a617-c51858a4d303" name="Changes" comment="Finished(?) the init function for the CustomerGenerator class, which should enable work on the SalesGenerator class sales simulation once ProductsGenerator is finished.">
-      <change beforePath="$PROJECT_DIR$/DataGenerators.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataGenerators.py" afterDir="false" />
+    <list default="true" id="58b73793-244a-40b3-a617-c51858a4d303" name="Changes" comment="Refactored for the addition of categories">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataGenerators.py" beforeDir="false" afterPath="$PROJECT_DIR$/SalesDataGenerator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +97,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712467235617</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Refactored for the addition of categories">
+      <option name="closed" value="true" />
+      <created>1712721679827</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712721679827</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -106,6 +115,7 @@
     <MESSAGE value="First commit" />
     <MESSAGE value="Started work on the DataGenerator, decided to go with pandas instead of torcharrow due to stability concerns. Checked if CUDA is available and all lights are green, so once we have a way to mockup data we'll be cooking with gas." />
     <MESSAGE value="Finished(?) the init function for the CustomerGenerator class, which should enable work on the SalesGenerator class sales simulation once ProductsGenerator is finished." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished(?) the init function for the CustomerGenerator class, which should enable work on the SalesGenerator class sales simulation once ProductsGenerator is finished." />
+    <MESSAGE value="Refactored for the addition of categories" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored for the addition of categories" />
   </component>
 </project>
