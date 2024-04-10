@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58b73793-244a-40b3-a617-c51858a4d303" name="Changes" comment="Finished(?) the init function for the CustomerGenerator class, which should enable work on the SalesGenerator class sales simulation once ProductsGenerator is finished." />
+    <list default="true" id="58b73793-244a-40b3-a617-c51858a4d303" name="Changes" comment="Finished(?) the init function for the CustomerGenerator class, which should enable work on the SalesGenerator class sales simulation once ProductsGenerator is finished.">
+      <change beforePath="$PROJECT_DIR$/DataGenerators.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataGenerators.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
