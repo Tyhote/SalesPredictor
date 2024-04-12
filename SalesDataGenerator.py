@@ -93,16 +93,17 @@ class CustomerGenerator:
         # Generate that number of customer uuids
         uuids = pd.Series([i for i in range(0, customers)])
         # And starting cashes
-        low = rng.normal(loc=min_cash, scale=min_cash / 2, size=n_low).tolist()
-        avg = rng.normal(loc=avg_cash, scale=avg_cash / 2, size=n_avg).tolist()
-        high = rng.normal(loc=max_cash, scale=max_cash / 2, size=n_high).tolist()
+        low = rng.normal(loc=min_cash, scale=min_cash / 4, size=n_low).tolist()
+        avg = rng.normal(loc=avg_cash, scale=avg_cash / 4, size=n_avg).tolist()
+        high = rng.normal(loc=max_cash, scale=max_cash / 4, size=n_high).tolist()
         cashes = pd.Series(np.append(low, [avg, high]))
         # As well as starting experience level
         experiences = pd.Series(
             rng.normal(loc=average_experience, scale=CustomerGenerator.SCALE, size=customers))
 
         # Now we give them "interests"
-        ints_per_each = rng.integers(low=1, high=21, size=customers)
+        # noinspection PyTypeChecker
+        ints_per_each: list = rng.integers(low=1, high=21, size=customers)
         interests = []
         num_categories = categories.df.shape[0]
         for customer in range(0, customers):
@@ -156,14 +157,15 @@ class ProductsGenerator:
         # Then generate the product uuids
         uuids = pd.Series([i for i in range(0, products)])
         # And the wholesale prices
-        wholesale = pd.Series(rng.random(size=products)) * ProductsGenerator.MAX_WHOLESALE
+        wholesale = pd.Series(rng.integers(low=min_price, high=max_price, size=products))
         # Multiply by the markup to get retail price
         retail = wholesale * ProductsGenerator.MARKUP
         # Randomly generate inventory numbers
-        inventory = pd.Series(rng.integers(InterestsGlow=1, high=ProductsGenerator.MAX_INVENTORY, size=products))
+        inventory = pd.Series(rng.integers(low=1, high=ProductsGenerator.MAX_INVENTORY, size=products))
         # Set sales to 0
         sales = pd.Series(np.zeros(products))
         # Giving ten percent of items a 25% or 50% discount
+        # noinspection PyTypeChecker
         discounts = pd.Series([rng.choice([.25, .50]) for i in rng.random(size=products) if i < 0.1])
         # Give expiration date in timestamp one to two years from now
         year_secs = 31536000
@@ -187,7 +189,7 @@ class SalesDataGenerator:
     MAX_ROWS = 2000000
     MIN_ROWS = 100
 
-    def __init__(self, rows, timestamp=None):
+    def __init__(self, rows, avg_interval, timestamp=None):
 
         if timestamp is None:
             # Setting timestamp to current time if none given
@@ -195,11 +197,13 @@ class SalesDataGenerator:
         else:
             # Checking if within 1970-2038 (Epochalypse)
             if not isinstance(timestamp, int) or not (-1 < timestamp < 2145938400):
-                # Set to current time
+                # Set beginning to current time
                 self.begin = datetime.datetime.now()
             else:
                 # All checks succeeded, so use the timestamp value
                 self.begin = datetime.datetime.fromtimestamp(timestamp)
+        # Set current time to beginning time so we can simulate from that point
+        self.current = self.begin
 
         # Check if rows arg is inbounds, compress to min or max if not
         if rows < SalesDataGenerator.MIN_ROWS:
@@ -209,3 +213,9 @@ class SalesDataGenerator:
 
         # Create a DataFrame based on the columns given by the template
         data = pd.DataFrame(columns=sale_columns)
+
+        rng = np.random.default_rng()
+        # Start "simulation"
+        for row in range(0, rows):
+            # Incrementing the time by a normally random distribution from [~0,  avg_interval, ~avg_interval * 2]
+            self.current += np.floor(rng.normal(loc=avg_interval, scale=avg_interval / 4))
