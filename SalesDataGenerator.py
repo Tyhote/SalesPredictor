@@ -45,6 +45,7 @@ class CategoryGenerator:
     MAX_CATEGORIES = 100
     MIN_CATEGORIES = 10
 
+    # Suspiciously simple. This init is complete.
     def __init__(self, categories, avg_intensity):
         self.df = pd.DataFrame(columns=category_columns)
         self.df['Category ID'] = pd.Series([i for i in range(1, categories + 1)])
@@ -168,10 +169,17 @@ class ProductsGenerator:
         year_secs = 31536000
         expirations = ((pd.Series(rng.random(size=products)) + 1) * year_secs) + datetime.datetime.now().timestamp()
         # Select some categories for each product, 1-3
-        # TODO: You MUST implement the CategoryGenerator before continuing here.
-        #       The usage of the uuid of the categories given will currently result in a runtime error.
         cats = [rng.choice(categories.df.shape[0] + 1, size=i) for i in
                 pd.Series(rng.integers(low=1, high=4, size=products))]
+        # Now we have to assign each field to its respective column in the dataframe
+        self.df["Item ID"] = uuids
+        self.df["Wholesale Price"] = wholesale
+        self.df["Retail Price"] = retail
+        self.df["Num in Inventory"] = inventory
+        self.df["Total Sold"] = sales
+        self.df["Current Discount"] = discounts
+        self.df["Expiration Date"] = expirations
+        self.df["Categories"] = cats
 
 
 class SalesDataGenerator:
