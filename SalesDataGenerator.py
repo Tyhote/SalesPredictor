@@ -22,9 +22,7 @@ def read_template(name):
         return columns
 
 
-cust_columns = ["Customer ID", "Experience", "Starting Cash", "Spending Cash", "Categories"]
-sale_columns = ["Item(s)", "Wholesale Price(s)", "Retail Price(s)", "Discount(s)", "Number Sold(each)", "Timestamp",
-                "Expiration Date(s)"]
+cust_columns = ["ID", "Experience", "Starting Cash", "Spending Cash", "Categories"]
 category_columns = ["Category ID", "Intensity"]
 
 
@@ -184,12 +182,18 @@ class ProductsGenerator:
         self.df["Categories"] = cats
 
 
+sale_columns = ["Timestamp", "Item(s)", "Wholesale Price(s)", "Retail Price(s)", "Discount(s)", "Number Sold(each)",
+                "Expiration Date(s)"]
+
+
 class SalesDataGenerator:
     __generatortype__ = DataGeneratorType.SALES
     MAX_ROWS = 2000000
     MIN_ROWS = 100
+    MAX_ITEMS = 5
+    MIN_ITEMS = 1
 
-    def __init__(self, rows, avg_interval, timestamp=None):
+    def __init__(self, rows, avg_interval, products: ProductsGenerator, customers: CustomerGenerator, timestamp=None):
 
         if timestamp is None:
             # Setting timestamp to current time if none given
@@ -202,7 +206,7 @@ class SalesDataGenerator:
             else:
                 # All checks succeeded, so use the timestamp value
                 self.begin = datetime.datetime.fromtimestamp(timestamp)
-        # Set current time to beginning time so we can simulate from that point
+        # Set current time to beginning time, so we can simulate from that point
         self.current = self.begin
 
         # Check if rows arg is inbounds, compress to min or max if not
@@ -216,6 +220,13 @@ class SalesDataGenerator:
 
         rng = np.random.default_rng()
         # Start "simulation"
+        timestamp = []
+        n_products = products.df.shape[0]
+        n_customers = customers.df.shape[0]
         for row in range(0, rows):
+            # Randomly select which customer to use
+            customer = customers.df["ID"][rng.choice(n_customers + 1)]
             # Incrementing the time by a normally random distribution from [~0,  avg_interval, ~avg_interval * 2]
             self.current += np.floor(rng.normal(loc=avg_interval, scale=avg_interval / 4))
+            #   and recording that time as the time of purchase
+            timestamp[row] = self.current
