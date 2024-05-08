@@ -44,6 +44,7 @@ class CategoryGenerator:
     MIN_CATEGORIES = 10
 
     # Suspiciously simple. This init is complete.
+    #   Possible update with cross-linking of interests
     def __init__(self, categories, avg_intensity):
         self.df = pd.DataFrame(columns=category_columns)
         self.df['Category ID'] = pd.Series([i for i in range(1, categories + 1)])
@@ -219,6 +220,9 @@ class SalesDataGenerator:
         data = pd.DataFrame(columns=sale_columns)
 
         rng = np.random.default_rng()
+
+        # Create an instance DataFrame
+        self.df = pd.DataFrame()
         # Start "simulation"
         timestamp = []
         n_products = products.df.shape[0]
@@ -229,4 +233,4 @@ class SalesDataGenerator:
             # Incrementing the time by a normally random distribution from [~0,  avg_interval, ~avg_interval * 2]
             self.current += np.floor(rng.normal(loc=avg_interval, scale=avg_interval / 4))
             #   and recording that time as the time of purchase
-            timestamp[row] = self.current
+            self.df["Timestamp"] = self.current

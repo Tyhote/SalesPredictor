@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58b73793-244a-40b3-a617-c51858a4d303" name="Changes" comment="Finished the ProductsGenerator class.">
+    <list default="true" id="58b73793-244a-40b3-a617-c51858a4d303" name="Changes" comment="Started work on the simulation portion of SalesDataGenerator">
+      <change beforePath="$PROJECT_DIR$/.idea/SalesPredictor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SalesPredictor.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SalesDataGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/SalesDataGenerator.py" afterDir="false" />
     </list>
@@ -29,14 +31,12 @@
     &quot;assignee&quot;: &quot;Tyhote&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="be1a85e4-a347-4ea1-b565-4e5a3bc2597b" />
-        <option name="url" value="https://github.com/Tyhote/SalesPredictor.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Tyhote/SalesPredictor.git&quot;,
+    &quot;accountId&quot;: &quot;be1a85e4-a347-4ea1-b565-4e5a3bc2597b&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -151,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712890224569</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Started work on the simulation portion of SalesDataGenerator">
+      <option name="closed" value="true" />
+      <created>1713051787735</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1713051787735</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -176,6 +184,7 @@
     <MESSAGE value="idk" />
     <MESSAGE value="Finished the first iteration of the init function for customers, completed the majority of the init function for products, and now need to complete the CategoryGenerator init function." />
     <MESSAGE value="Finished the ProductsGenerator class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished the ProductsGenerator class." />
+    <MESSAGE value="Started work on the simulation portion of SalesDataGenerator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started work on the simulation portion of SalesDataGenerator" />
   </component>
 </project>
